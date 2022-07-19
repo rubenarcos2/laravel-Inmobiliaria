@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <div class="container mt-5">
-        <form action="{{ url('houses-update', ['id' => $house->id]) }}" method="POST">
+        <form action="{{ route('houses-update', ['id' => $house->id]) }}" method="POST">
             @csrf
             <div class="form-group mb-3">
                 <label for="id">ID</label>
