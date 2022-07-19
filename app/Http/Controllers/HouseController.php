@@ -15,6 +15,13 @@ class HouseController extends Controller
         return view('houses.index', ['houses' => $houses, 'properties' => $properties]);
     }
 
+    public function new()
+    {
+        $properties = Property::all();
+        return view('houses.new', ['properties' => $properties]);
+    }
+
+
     public function store(Request $request){
 
         $request->validate([
@@ -22,7 +29,8 @@ class HouseController extends Controller
         ]);
 
         $house = new House;
-        $house->title = $request->title;
+        $house->shortDescription = $request->shortDescription;
+        $house->phone = $request->phone;
         $house->category_id = $request->category_id;
         $house->save();
 
@@ -51,6 +59,7 @@ class HouseController extends Controller
         $house = House::find($id);
 
         $house->shortDescription = $request->shortDescription;
+        $house->phone = $request->phone;
         $house->save();
 
         return redirect()->route('Houses')->with('success', 'House updated successfully');
