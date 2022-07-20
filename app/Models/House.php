@@ -11,8 +11,10 @@ class House extends Model
 
     protected $fillable = [
         'shortDescription',
+        'longDescription',
         'phone',
         'photo',
-        'property_id'
+        'property_id',
+        'update_at'
     ];
 }

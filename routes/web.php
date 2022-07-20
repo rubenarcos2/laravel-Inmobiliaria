@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::delete('/{id}', 'App\Http\Controllers\HouseController@destroy')->name('houses-destroy');
-    Route::patch('/{id}', 'App\Http\Controllers\HouseController@update')->name('houses-update');
+    Route::post('/edit/{id}', 'App\Http\Controllers\HouseController@update')->name('houses-update');
     Route::get('/edit/{id}', 'App\Http\Controllers\HouseController@edit')->name('houses-edit');
     Route::get('/new', 'App\Http\Controllers\HouseController@new')->name('houses-new');
     Route::post('/new', 'App\Http\Controllers\HouseController@store')->name('houses-new');

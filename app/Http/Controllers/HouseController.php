@@ -23,15 +23,16 @@ class HouseController extends Controller
 
 
     public function store(Request $request){
-
         $request->validate([
             'title' => 'required|min:3',
         ]);
 
         $house = new House;
         $house->shortDescription = $request->shortDescription;
+        $house->longDescription = $request->longDescription;
         $house->phone = $request->phone;
-        $house->category_id = $request->category_id;
+        $house->photo = $request->photo;
+        $house->property_id = $request->property_id;
         $house->save();
 
         return redirect()->route('houses')->with('success', 'House created successfully');
@@ -56,12 +57,15 @@ class HouseController extends Controller
     }
 
     public function update(Request $request, $id){
-        $house = House::find($id);
 
+        $house = House::find($id);
         $house->shortDescription = $request->shortDescription;
+        $house->longDescription = $request->longDescription;
         $house->phone = $request->phone;
+        $house->photo = $request->photo;
+        $house->property_id = $request->property_id;
         $house->save();
 
-        return redirect()->route('Houses')->with('success', 'House updated successfully');
+        return redirect()->route('houses')->with('success', 'House updated successfully');
     }
 }
