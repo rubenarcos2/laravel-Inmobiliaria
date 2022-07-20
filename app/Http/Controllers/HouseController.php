@@ -24,7 +24,7 @@ class HouseController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'title' => 'required|min:3',
+            'shortDescription' => 'required|min:3',
         ]);
 
         $house = new House;
@@ -57,6 +57,9 @@ class HouseController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate([
+            'shortDescription' => 'required|min:3',
+        ]);
 
         $house = House::find($id);
         $house->shortDescription = $request->shortDescription;

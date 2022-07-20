@@ -1,5 +1,14 @@
 @extends('app')
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-warning">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="container mt-5">
         <form action="{{ route('houses-update', ['id' => $house->id]) }}" method="post">
             @csrf
@@ -38,10 +47,9 @@
             </div>
             <div style="text-align: center">
                 <button type="submit" class="btn btn-primary">Modificar vivienda</button>
-
             </div>
         </form>
-        <div style="text-align: center">
+        <div style="text-align: center; margin-top: 5px">
             <form action="{{ route('houses-destroy', [$house->id]) }}" method="POST">
                 @method('DELETE')
                 @csrf
