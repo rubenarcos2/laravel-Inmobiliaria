@@ -5,12 +5,15 @@
             @csrf
             <div class="form-group mb-3">
                 <label for="shortDescription">Título</label>
-                <input type="text" class="form-control" id="shortDescription" name="shortDescription" aria-describedby="shortDescription"
-                       placeholder="Introduzca una descripción corta (Título)" value="{{$house->shortDescription}}" maxlength="255">
+                <input type="text" class="form-control" id="shortDescription" name="shortDescription"
+                       aria-describedby="shortDescription"
+                       placeholder="Introduzca una descripción corta (Título)" value="{{$house->shortDescription}}"
+                       maxlength="255">
             </div>
             <div class="form-group mb-3">
                 <label for="longDescription">Descripción</label>
-                <input type="text" class="form-control" id="longDescription" name="longDescription" aria-describedby="longDescription"
+                <input type="text" class="form-control" id="longDescription" name="longDescription"
+                       aria-describedby="longDescription"
                        placeholder="Introduzca una descripción" value="{{$house->longDescription}}" maxlength="255">
             </div>
             <div class="form-group mb-3">
@@ -35,13 +38,15 @@
             </div>
             <div style="text-align: center">
                 <button type="submit" class="btn btn-primary">Modificar vivienda</button>
-                <form action="{{ route('houses-destroy', [$house->id]) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger">Eliminar</button>
-                </form>
+
             </div>
         </form>
-
+        <div style="text-align: center">
+            <form action="{{ route('houses-destroy', [$house->id]) }}" method="POST">
+                @method('DELETE')
+                @csrf
+                <button class="btn btn-danger">Eliminar</button>
+            </form>
+        </div>
     </div>
 @endsection
