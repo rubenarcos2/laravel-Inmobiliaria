@@ -6,6 +6,7 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Descripción</th>
             <th>Teléfono</th>
             <th>Operaciones</th>
         </thead>
@@ -13,6 +14,7 @@
         <tr>
             <td>{{ $property->id }}</td>
             <td>{{ $property->name }}</td>
+            <td>{{ $property->shortDescription }}</td>
             <td>{{ $property->phone }}</td>
             <td>
                 <a href="{{ route('properties-edit', ['id' => $property->id]) }}">Editar</a>

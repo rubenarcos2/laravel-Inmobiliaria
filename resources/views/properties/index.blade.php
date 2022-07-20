@@ -16,7 +16,7 @@
             <tbody>
             @foreach ($properties as $property)
                 <tr>
-                    <td><a href="{{ route('properties-edit', ['id' => $property->id]) }}">{{ $property->name }}</a></td>
+                    <td><a href="{{ route('properties-show', ['id' => $property->id]) }}">{{ $property->name }}</a></td>
                     <td>{{ $property->phone }}</td>
 
                 </tr>

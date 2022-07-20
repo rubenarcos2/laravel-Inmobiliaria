@@ -52,6 +52,10 @@
                     <a class="nav-link {{str_contains('properties', Route::current()->getName()) ? 'active' : '' }}"
                        href="{{ route('properties') }}">Propietarios</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{str_contains('properties-new', Route::current()->getName()) ? 'active' : '' }}"
+                       href="{{ route('properties-new') }}">Nuevo propietario</a>
+                </li>
             </ul>
         </div>
         <!-- Right Side Of Navbar -->

@@ -21,12 +21,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/new', 'App\Http\Controllers\HouseController@store')->name('houses-new');
 
     Route::get('/properties', '\App\Http\Controllers\PropertyController@index')->name('properties');
-    Route::post('/properties', 'App\Http\Controllers\PropertyController@store');
+    Route::get('/properties/new', 'App\Http\Controllers\PropertyController@new')->name('properties-new');
+    Route::post('/properties/new', 'App\Http\Controllers\PropertyController@store')->name('properties-new');
+    Route::get('/properties/{id}', 'App\Http\Controllers\PropertyController@show')->name('properties-show');
     Route::delete('/properties/{id}', 'App\Http\Controllers\PropertyController@destroy')->name('properties-destroy');
-    Route::get('/properties/{id}', 'App\Http\Controllers\PropertyController@show')->name('properties-edit');
-    Route::patch('/properties/{id}', 'App\Http\Controllers\PropertyController@update')->name('properties-update');
+    Route::post('/properties/edit/{id}', 'App\Http\Controllers\PropertyController@update')->name('properties-update');
+    Route::get('/properties/edit/{id}', 'App\Http\Controllers\PropertyController@edit')->name('properties-edit');
 });
 
 Route::get('/', '\App\Http\Controllers\HouseController@index')->name('houses');
-Route::post('/', 'App\Http\Controllers\HouseController@store');
 Route::get('/{id}', 'App\Http\Controllers\HouseController@show')->name('houses-show');

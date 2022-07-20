@@ -24,9 +24,9 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function new()
     {
-        //
+        return view('properties.new');
     }
 
     /**
@@ -37,17 +37,17 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $this->validate($request, [
             'name' => 'required|unique:properties|max:255',
         ]);
 
         $property = new Property;
         $property->name = $request->name;
+        $property->shortDescription = $request->shortDescription;
+        $property->phone = $request->phone;
         $property->save();
 
-        return redirect()->route('properties.index')->with('success', 'Property has been added');
+        return redirect()->route('properties')->with('success', 'Property has been added');
     }
 
     /**
@@ -70,7 +70,8 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $property = Property::find($id);
+        return view('properties.update', ['property' => $property]);
     }
 
     /**
@@ -85,9 +86,11 @@ class PropertyController extends Controller
         $property = Property::find($property);
 
         $property->name = $request->name;
+        $property->shortDescription = $request->shortDescription;
+        $property->phone = $request->phone;
         $property->save();
 
-        return redirect()->route('properties.index')->with('success', 'Property updated successfully');
+        return redirect()->route('properties')->with('success', 'Property updated successfully');
     }
 
     /**
@@ -104,6 +107,6 @@ class PropertyController extends Controller
             $todo->delete(); // <-- direct deletion
         });
         $property->delete();
-        return redirect()->route('properties.index')->with('success', 'Property deleted successfully');
+        return redirect()->route('properties')->with('success', 'Property deleted successfully');
     }
 }
